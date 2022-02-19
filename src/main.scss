@@ -5,7 +5,8 @@
     padding: 0;
     box-sizing: border-box;
 }
-$square-size: 110px;
+
+$square-size: 100px;
 
 .game {
     @include center;
@@ -78,7 +79,7 @@ $square-size: 110px;
 
 
 @media (min-width: 720px) {
-    $square-desktop: 180px;
+    $square-desktop: 150px;
 
     .board_row {
         height: $square-desktop;
@@ -89,14 +90,14 @@ $square-size: 110px;
         }
     }
     .status {
-        font-size: 46px;
+        font-size: 42px;
     }
 
     .pastafarianism {
-        font-size: 55px;
+        font-size: 50px;
     }
 
     .ghost {
-        font-size: 52px;
+        font-size: 48px;
     }
 }

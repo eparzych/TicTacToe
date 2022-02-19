@@ -1,13 +1,22 @@
 import React from "react";
+import { FaPastafarianism} from "react-icons/fa";
+import { FaGhost } from "react-icons/fa";
+
+const playerIcon = {
+  1: <FaPastafarianism className="pastafarianism"/>,
+  2: <FaGhost className="ghost"/>
+}
 
 export const Board = (props) => {
   const { winner, nextValue, status, squares, setSquares } = props;
 
-  function selectSquare(square) {
-    if (winner || squares[square]) {return}
-      const squaresCopy = [...squares]
-      squaresCopy[square] = nextValue
-      setSquares(squaresCopy)
+  function selectSquare(squareNumber) {
+    if (winner || squares[squareNumber]) {
+      return
+    }
+    const squaresCopy = [...squares]
+    squaresCopy[squareNumber] = nextValue
+    setSquares(squaresCopy)
   }
 
   function restart() {
@@ -17,7 +26,7 @@ export const Board = (props) => {
   function renderSquare(i) {
     return (
       <button className="square" onClick={() => selectSquare(i)}>
-        {squares[i]}
+        { playerIcon[squares[i]] }
       </button>
     )
   }

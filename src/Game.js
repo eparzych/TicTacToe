@@ -1,20 +1,17 @@
 import React, { useState } from "react";
-import { FaPastafarianism} from "react-icons/fa";
-import { FaGhost } from "react-icons/fa";
 import { Board } from "./Board";
 
-function calculateStatus(winner, squares) {
-    return winner
-      // ? `Winner: ${winner}`
-      ? `Winner: ${squares.filter(Boolean).length % 2 === 0 ? "Player 1" : "Player 2"}`
-      : squares.every(Boolean)
-      ? `Draw`
-      // : `Next player: ${nextValue}`
-      : `Next player: ${squares.filter(Boolean).length % 2 === 0 ? "Player 1" : "Player 2"}`
+function calculateStatus(winner, squares, nextValue) {
+    if(winner){
+      return `Winner: ${winner}`
+    } else if(squares.every(Boolean)){
+      return `Tie`
+    }
+    return `Next player: ${nextValue}`
   }
   
   function calculateNextValue(squares) {
-    return squares.filter(Boolean).length % 2 === 0 ? <FaPastafarianism/> : <FaGhost/>
+    return squares.filter(Boolean).length % 2 === 0 ? 1 : 2
   }
   
   function calculateWinner(squares) {
@@ -49,7 +46,7 @@ export const Game = () => {
       <div className="game">
         <div className="game_content">
           <Board 
-            winer = {winner}
+            winner = {winner}
             nextValue = {nextValue}
             status = {status}
             squares = {squares}
@@ -59,5 +56,4 @@ export const Game = () => {
       </div>
     )
   }
-  
   

@@ -9,7 +9,7 @@ const playerName = {
 function calculateStatus(winner, squares, nextValue) {
   
     if(winner){
-      return `Winner: ${playerName[nextValue]}`
+      return `Winner: ${playerName[winner]}`
     } else if(squares.every(Boolean)){
       return `Tie`
     }

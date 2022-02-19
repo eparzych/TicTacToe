@@ -46,16 +46,31 @@ $square-size: 110px;
 }
     
 .status {
-    font-size: 37px;
-    font-weight: bold;
+    @include center;
+    font-family: 'Shizuru', cursive;
+    font-size: 35px;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 36px;
 }
 
 .restart {
-    margin-top: 20px;
-    padding: 10px 25px;
+    margin-top: 30px;
+    padding: 12px 30px;
     border: 1px solid #333;
     border-radius: 5px;
+    box-shadow: 2px 3px 2px rgb(112, 110, 0);
+    font-size: 18px;
+    font-weight: bold;
     text-transform: uppercase;
+    background-color: rgb(255, 253, 114);
+}
+
+.pastafarianism {
+    color: rgb(255, 47, 47);
+    font-size: 46px;
+}
+
+.ghost {
+    font-size: 43px;
+    color:rgb(0, 128, 160);
 }

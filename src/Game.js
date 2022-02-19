@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { Board } from "./Board";
 
+const playerName = {
+  1: "Pastafarian",
+  2: "Ghost"
+}
+
 function calculateStatus(winner, squares, nextValue) {
+  
     if(winner){
-      return `Winner: ${winner}`
+      return `Winner: ${playerName[nextValue]}`
     } else if(squares.every(Boolean)){
       return `Tie`
     }
-    return `Next player: ${nextValue}`
+    return `Next player: ${playerName[nextValue]}`
   }
   
   function calculateNextValue(squares) {

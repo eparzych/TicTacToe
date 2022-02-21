@@ -8,19 +8,15 @@ const playerIcon = {
 }
 
 export const Board = (props) => {
-  const { winner, nextValue, status, squares, setSquares } = props;
+  const { winner, status, squares, dispatch } = props;
 
   function selectSquare(squareNumber) {
     if (winner || squares[squareNumber]) {
       return
     }
-    const squaresCopy = [...squares]
-    squaresCopy[squareNumber] = nextValue
-    setSquares(squaresCopy)
-  }
-
-  function restart() {
-    setSquares(Array(9).fill(null))
+    dispatch({
+      type: "SELECTSQUARE", squareNumber    
+     })
   }
 
   function renderSquare(i) {
@@ -51,7 +47,7 @@ export const Board = (props) => {
           {renderSquare(8)}
         </div>
       </div>
-      <button className="restart" onClick={restart}>
+      <button className="restart" onClick={() => dispatch({type: "RESTART"})}>
         restart
       </button>
     </>

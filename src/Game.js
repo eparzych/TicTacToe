@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import { Board } from "./Board";
 
 const playerName = {
   1: "Pastafarian",
   2: "Ghost"
+}
+
+function squareReducer (squares, action){
+  switch (action.type){
+    case "RESTART": {
+      return Array(9).fill(null)
+    }
+    case "SELECTSQUARE": {
+      const squaresCopy = [...squares]
+      squaresCopy[action.squareNumber] = calculateNextValue(squares);
+      return squaresCopy;
+    }
+  }
 }
 
 function calculateStatus(winner, squares, nextValue) {
@@ -42,7 +55,7 @@ function calculateStatus(winner, squares, nextValue) {
 
 export const Game = () => {
 
-    const [squares, setSquares] = useState(Array(9).fill(null));
+    const [squares, dispatch] = useReducer(squareReducer, Array(9).fill(null));
 
     const nextValue = calculateNextValue(squares);
     const winner = calculateWinner(squares);
@@ -53,10 +66,9 @@ export const Game = () => {
         <div className="game_content">
           <Board 
             winner = {winner}
-            nextValue = {nextValue}
             status = {status}
             squares = {squares}
-            setSquares = {setSquares}
+            dispatch = {dispatch}
           />
         </div>
       </div>
